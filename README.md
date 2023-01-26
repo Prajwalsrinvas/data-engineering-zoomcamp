@@ -1,2 +1,1 @@
-# data-engineering-zoomcamp
-Code and solutions for Data Engineering Zoomcamp course
+# [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) Code and Solutions
