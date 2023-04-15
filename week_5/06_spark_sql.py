@@ -101,14 +101,16 @@ GROUP BY
 
 df_result.coalesce(1).write.parquet(output, mode="overwrite")
 
-'''
-Running script:
+"""
+1. Running script:
+
 python 06_spark_sql.py \
     --input_green=data/pq/green/2020/*/ \
     --input_yellow=data/pq/yellow/2020/*/ \
     --output=data/report-2020
 
-Running script using spark-submit
+2. Running script using spark-submit:
+
 URL="spark://de-zoomcamp.asia-south1-a.c.sapient-magnet-375509.internal:7077"
 
 spark-submit \
@@ -117,4 +119,15 @@ spark-submit \
         --input_green=data/pq/green/2021/*/ \
         --input_yellow=data/pq/yellow/2021/*/ \
         --output=data/report-2021
-'''
+        
+3. Running script using gcloud on Dataproc:
+
+gcloud dataproc jobs submit pyspark \
+    --cluster=dez-cluster \
+    --region=asia-south1 \
+    gs://dez-gcs/code/06_spark_sql.py \
+    -- \
+        --input_green=gs://dez-gcs/pq/green/2020/*/ \
+        --input_yellow=gs://dez-gcs/pq/yellow/2020/*/ \
+        --output=gs://dez-gcs/report-2020
+"""
